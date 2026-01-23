@@ -14,28 +14,34 @@ def test_number_formatting():
     # Os.č. validation
     rec = PayrollRecord(**{
         "Os.č.": 2145.0,
+        "Jméno": "Konůpková Veronika",
         "Mzdová složka": 305.0,
         "Hodnota": "5 000,00",
         "Období": "202511"
     })
     assert rec.os_c == "2145"
+    assert rec.jmeno == "Konůpková Veronika"
     assert rec.mzdova_slozka == "305"
     assert rec.hodnota == "5000"
     
     rec2 = PayrollRecord(**{
         "Os.č.": "1111",
+        "Jméno": "Novák Jan",
         "Mzdová složka": "305",
         "Hodnota": "1500.50",
         "Období": "202511"
     })
     assert rec2.hodnota == "1500.5"
+    assert rec2.jmeno == "Novák Jan"
 
 def test_empty_values():
     rec = PayrollRecord(**{
         "Os.č.": None,
+        "Jméno": None,
         "Mzdová složka": None,
         "Hodnota": None,
         "Období": None
     })
     assert rec.os_c == ""
+    assert rec.jmeno == ""
     assert rec.hodnota == "0"

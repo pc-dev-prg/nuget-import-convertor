@@ -8,6 +8,7 @@ class PayrollTransformer:
     def __init__(self):
         self.column_mapping = {
             0: "Os.č.",
+            1: "Jméno",
             2: "Mzdová složka",
             3: "Hodnota",
             5: "Období"
@@ -61,9 +62,12 @@ class PayrollTransformer:
                 if pd.isna(hodnota_val):
                     continue
 
+                jmeno_val = row.get("Jméno")
+
                 try:
                     data = {
                         "Os.č.": os_c_val,
+                        "Jméno": jmeno_val,
                         "Mzdová složka": mzdova_val,
                         "Hodnota": hodnota_val,
                         "Období": row["Období"]
@@ -88,7 +92,7 @@ class PayrollTransformer:
             with open(output_file, mode='w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f, delimiter=';', quoting=csv.QUOTE_MINIMAL)
                 # Write Header
-                writer.writerow(["POD", "L0001", "L0004", "OBD", "L4901", "L4902", "L4907"])
+                writer.writerow(["POD", "L0001", "L0004", "OBD", "L4901", "L4902", "L4907", "JMENO"])
                 
                 for rec in records:
                     obd = self.transform_date(rec.obdobi)
@@ -99,7 +103,8 @@ class PayrollTransformer:
                         obd,           # OBD
                         rec.mzdova_slozka, # L4901
                         rec.hodnota,   # L4902
-                        "A"            # L4907
+                        "A",            # L4907
+                        rec.jmeno      # JMENO
                     ])
             
             return True, f"Successfully processed {len(records)} records."

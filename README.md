@@ -27,7 +27,7 @@ The tool strictly follows these transformation rules for the import format:
 2.  **Number Formatting**: Removes thousand separators and converts decimal commas to dots.
 3.  **CSV Specification**:
     - **Delimiter**: `;` (Semicolon)
-    - **Columns**: `POD`, `L0001` (ID), `L0004` (0), `OBD` (Period), `L4901` (Code), `L4902` (Value), `L4907` (A).
+    - **Columns**: `POD`, `L0001` (ID), `L0004` (0), `OBD` (Period), `L4901` (Code), `L4902` (Value), `L4907` (A), `JMENO` (Name from Col B).
 
 ## 💻 Getting Started
 

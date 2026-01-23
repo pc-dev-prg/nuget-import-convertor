@@ -6,6 +6,7 @@ class PayrollRecord(BaseModel):
     mzdova_slozka: str = Field(..., alias="Mzdová složka")
     hodnota: str = Field(..., alias="Hodnota")
     obdobi: str = Field(..., alias="Období")
+    jmeno: str = Field(..., alias="Jméno")
 
     @validator("os_c", pre=True)
     def format_os_c(cls, v):
@@ -13,6 +14,11 @@ class PayrollRecord(BaseModel):
         # Convert float like 2145.0 to "2145"
         if isinstance(v, float):
             return str(int(v))
+        return str(v).strip()
+
+    @validator("jmeno", pre=True)
+    def format_jmeno(cls, v):
+        if v is None: return ""
         return str(v).strip()
 
     @validator("mzdova_slozka", pre=True)
