@@ -44,6 +44,10 @@ Aplikace automaticky provádí tyto kroky:
 - **Úprava čísel**: Odstraňuje oddělovače tisíců a převádí čárky na tečky.
 - **Přiřazení jména**: Do sloupce `JMENO` se přenáší hodnota ze sloupce B zdrojového souboru.
 - **Formát CSV**: Výstupní soubor má středník (`;`) jako oddělovač a obsahuje záhlaví sloupců podle specifikace.
+- **Převod mzdových složek (L4901)**: Pokud ve složce s aplikací existuje soubor `mapping.csv`, aplikace automaticky nahradí staré kódy mzdových složek novými.
+  - Soubor `mapping.csv` musí mít sloupce `OldValue` a `NewValue` oddělené středníkem.
+  - Příklad: Pokud chcete změnit kód `111` na `4511`, přidejte do souboru řádek `111;4511`.
+  - Pokud kód v tabulce není, zůstane původní.
 
 ## ⚠️ Řešení problémů
 

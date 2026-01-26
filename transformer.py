@@ -13,6 +13,23 @@ class PayrollTransformer:
             3: "Hodnota",
             5: "Období"
         }
+        self.code_mapping = self.load_mapping()
+
+    def load_mapping(self) -> Dict[str, str]:
+        mapping = {}
+        mapping_file = Path("mapping.csv")
+        if mapping_file.exists():
+            try:
+                with open(mapping_file, mode='r', encoding='utf-8') as f:
+                    reader = csv.DictReader(f, delimiter=';')
+                    for row in reader:
+                        old_val = str(row.get("OldValue", "")).strip()
+                        new_val = str(row.get("NewValue", "")).strip()
+                        if old_val and new_val:
+                            mapping[old_val] = new_val
+            except Exception:
+                pass # Silently fail if mapping is malformed
+        return mapping
 
     @staticmethod
     def transform_date(period: str) -> str:
@@ -101,7 +118,7 @@ class PayrollTransformer:
                         rec.os_c,      # L0001
                         "0",           # L0004
                         obd,           # OBD
-                        rec.mzdova_slozka, # L4901
+                        self.code_mapping.get(rec.mzdova_slozka, rec.mzdova_slozka), # L4901 (Mapped)
                         rec.hodnota,   # L4902
                         rec.jmeno      # JMENO
                     ])

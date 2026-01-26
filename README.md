@@ -28,6 +28,9 @@ The tool strictly follows these transformation rules for the import format:
 3.  **CSV Specification**:
     - **Delimiter**: `;` (Semicolon)
     - **Columns**: `POD`, `L0001` (ID), `L0004` (0), `OBD` (Period), `L4901` (Code), `L4902` (Value), `JMENO` (Name from Col B).
+4.  **L4901 Value Mapping**: Optional translation of payroll codes using `mapping.csv`.
+    - Format: `OldValue;NewValue`
+    - If `mapping.csv` is present in the app directory, codes matching `OldValue` will be replaced by `NewValue`.
 
 ## 💻 Getting Started
 
