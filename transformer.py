@@ -87,12 +87,12 @@ class PayrollTransformer:
             output_file = output_dir / f"{file_path.stem}.csv"
             
             # CSV Specification: Delimiter ;
-            # POD (500), L0001 (Os.č.), L0004 (0), OBD (upravené datum), L4901 (Mzdová složka), L4902 (Hodnota), L4907 (A)
+            # POD (500), L0001 (Os.č.), L0004 (0), OBD (upravené datum), L4901 (Mzdová složka), L4902 (Hodnota)
             
             with open(output_file, mode='w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f, delimiter=';', quoting=csv.QUOTE_MINIMAL)
                 # Write Header
-                writer.writerow(["POD", "L0001", "L0004", "OBD", "L4901", "L4902", "L4907", "JMENO"])
+                writer.writerow(["POD", "L0001", "L0004", "OBD", "L4901", "L4902", "JMENO"])
                 
                 for rec in records:
                     obd = self.transform_date(rec.obdobi)
@@ -103,7 +103,6 @@ class PayrollTransformer:
                         obd,           # OBD
                         rec.mzdova_slozka, # L4901
                         rec.hodnota,   # L4902
-                        "A",            # L4907
                         rec.jmeno      # JMENO
                     ])
             

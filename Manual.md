@@ -30,7 +30,7 @@ Aplikace je navržena tak, aby byla na Windows co nejjednodušší na spuštěn�
     - Aplikace prohledá vybranou složku i všechny její podsložky.
     - Pro každý nalezený soubor vytvoří v daném místě podsložku `/Import`.
     - Do této podsložky uloží transformovaný soubor ve formátu `.csv`.
-    - CSV soubor obsahuje sloupce: `POD`, `L0001`, `L0004`, `OBD`, `L4901`, `L4902`, `L4907` a nově i `JMENO`.
+    - CSV soubor obsahuje sloupce: `POD`, `L0001`, `L0004`, `OBD`, `L4901`, `L4902` a nově i `JMENO`.
 4.  **Zpětná vazba**: V terminálu uvidíte přehlednou tabulku se stavem zpracování každého souboru.
 5.  **Pokračování nebo Konec**:
     - Stiskněte **[N]** pro výběr nové složky.
