@@ -19,6 +19,7 @@ cp requirements.txt "$FOLDER_NAME/"
 cp run.bat "$FOLDER_NAME/"
 cp Manual.pdf "$FOLDER_NAME/"
 cp mapping.csv "$FOLDER_NAME/"
+cp run.sh "$FOLDER_NAME/"
 
 # Create the ZIP archive
 zip -r "$ZIP_NAME" "$FOLDER_NAME"

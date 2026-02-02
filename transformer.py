@@ -63,10 +63,13 @@ class PayrollTransformer:
             errors = []
 
             for index, row in df_mapped.iterrows():
-                # Skip header (usually index 0 or row with column names as strings)
-                # or empty rows (Os.c. is NaN)
+                # Always skip the first row (index 0) - it's the header
+                if index == 0:
+                    continue
+                    
+                # Skip empty rows (Os.c. is NaN)
                 os_c_val = row.get("Os.č.")
-                if pd.isna(os_c_val) or str(os_c_val).strip() == "Os.č.":
+                if pd.isna(os_c_val):
                     continue
                 
                 # Also skip rows where "Mzdová složka" is not a number (e.g. the header labels)
