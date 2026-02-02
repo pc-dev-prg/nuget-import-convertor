@@ -106,7 +106,7 @@ class PayrollTransformer:
             # CSV Specification: Delimiter ;
             # POD (500), L0001 (Os.č.), L0004 (0), OBD (upravené datum), L4901 (Mzdová složka), L4902 (Hodnota)
             
-            with open(output_file, mode='w', newline='', encoding='utf-8') as f:
+            with open(output_file, mode='w', newline='', encoding='utf-8-sig') as f:
                 writer = csv.writer(f, delimiter=';', quoting=csv.QUOTE_MINIMAL)
                 # Write Header
                 writer.writerow(["POD", "L0001", "L0004", "OBD", "L4901", "L4902", "JMENO"])
